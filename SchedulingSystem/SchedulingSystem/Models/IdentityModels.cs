@@ -20,6 +20,12 @@ namespace SchedulingSystem.Models
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
+        public DbSet<Cap> Caps { get; set; }
+        public DbSet<Schedule> Schedules { get; set; }
+        public DbSet<Rating> Ratings { get; set; }
+        public DbSet<PaymentType> PaymentTypes { get; set; }
+        public DbSet<Payment> Payments { get; set; }
+        public DbSet<Fee> Fees { get; set; }
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {

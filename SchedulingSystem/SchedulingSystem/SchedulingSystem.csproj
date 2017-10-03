@@ -215,10 +215,56 @@
     <Compile Include="Migrations\201709281941202_initial migration.Designer.cs">
       <DependentUpon>201709281941202_initial migration.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201709282027398_add cap table.cs" />
+    <Compile Include="Migrations\201709282027398_add cap table.Designer.cs">
+      <DependentUpon>201709282027398_add cap table.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201709282053096_changed property ApplicaitonUserId data type to string in cap model.cs" />
+    <Compile Include="Migrations\201709282053096_changed property ApplicaitonUserId data type to string in cap model.Designer.cs">
+      <DependentUpon>201709282053096_changed property ApplicaitonUserId data type to string in cap model.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201709282055585_populate cap table.cs" />
+    <Compile Include="Migrations\201709282055585_populate cap table.Designer.cs">
+      <DependentUpon>201709282055585_populate cap table.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201709282343264_created schedule table.cs" />
+    <Compile Include="Migrations\201709282343264_created schedule table.Designer.cs">
+      <DependentUpon>201709282343264_created schedule table.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201709290005438_added Rating table.cs" />
+    <Compile Include="Migrations\201709290005438_added Rating table.Designer.cs">
+      <DependentUpon>201709290005438_added Rating table.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201709290008506_added PaymentType table.cs" />
+    <Compile Include="Migrations\201709290008506_added PaymentType table.Designer.cs">
+      <DependentUpon>201709290008506_added PaymentType table.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201709290012104_added Payments table.cs" />
+    <Compile Include="Migrations\201709290012104_added Payments table.Designer.cs">
+      <DependentUpon>201709290012104_added Payments table.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201709290014501_added forign key to schedules table.cs" />
+    <Compile Include="Migrations\201709290014501_added forign key to schedules table.Designer.cs">
+      <DependentUpon>201709290014501_added forign key to schedules table.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201709290018155_added Fees table.cs" />
+    <Compile Include="Migrations\201709290018155_added Fees table.Designer.cs">
+      <DependentUpon>201709290018155_added Fees table.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710021443062_updated some tables data type in the database.cs" />
+    <Compile Include="Migrations\201710021443062_updated some tables data type in the database.Designer.cs">
+      <DependentUpon>201710021443062_updated some tables data type in the database.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Cap.cs" />
+    <Compile Include="Models\Fee.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\Payment.cs" />
+    <Compile Include="Models\PaymentType.cs" />
+    <Compile Include="Models\Rating.cs" />
+    <Compile Include="Models\Schedule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -297,6 +343,36 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201709281941202_initial migration.resx">
       <DependentUpon>201709281941202_initial migration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709282027398_add cap table.resx">
+      <DependentUpon>201709282027398_add cap table.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709282053096_changed property ApplicaitonUserId data type to string in cap model.resx">
+      <DependentUpon>201709282053096_changed property ApplicaitonUserId data type to string in cap model.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709282055585_populate cap table.resx">
+      <DependentUpon>201709282055585_populate cap table.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709282343264_created schedule table.resx">
+      <DependentUpon>201709282343264_created schedule table.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709290005438_added Rating table.resx">
+      <DependentUpon>201709290005438_added Rating table.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709290008506_added PaymentType table.resx">
+      <DependentUpon>201709290008506_added PaymentType table.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709290012104_added Payments table.resx">
+      <DependentUpon>201709290012104_added Payments table.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709290014501_added forign key to schedules table.resx">
+      <DependentUpon>201709290014501_added forign key to schedules table.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709290018155_added Fees table.resx">
+      <DependentUpon>201709290018155_added Fees table.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710021443062_updated some tables data type in the database.resx">
+      <DependentUpon>201710021443062_updated some tables data type in the database.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
