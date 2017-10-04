@@ -1,0 +1,42 @@
+﻿@model SchedulingSystem.ViewModels.ScoringDriver
+
+@{
+    ViewBag.Title = "ScoringDriver";
+}
+
+<h2>Rate the Driver</h2>
+<h4>You may rate the driver from 0 to 10. 0 being the worst and 10 being the best</h4>
+
+
+@using (Html.BeginForm("SaveDriverScore", "Rating")) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.DriverScore, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.DriverScore, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.DriverScore, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        @Html.HiddenFor(m => m.CapId )
+        @Html.HiddenFor(m => m.UserId)
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Score" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to Searching For Driver", "SearchingForDriver")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
