@@ -1,4 +1,5 @@
-﻿using SchedulingSystem.Models;
+﻿using Microsoft.AspNet.Identity;
+using SchedulingSystem.Models;
 using SchedulingSystem.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -79,7 +80,7 @@ namespace SchedulingSystem.Controllers
             {
                 //this is not working, needs fixing
                 ModelState.AddModelError("", "invalid score, Try again. ");
-                return View(driverInfo);
+                return View("ScoringDriver", driverInfo);
             }
 
             var user = context.Users.FirstOrDefault(u => u.Id == driverInfo.UserId);
@@ -96,11 +97,21 @@ namespace SchedulingSystem.Controllers
             return RedirectToAction("Index", "Home");            
         }
 
-
-        // GET: Rating/Create
-        public ActionResult Create()
+        public ActionResult DriverScore()
         {
-            return View();
+            double totalScore = 0;
+            var user = User.Identity.GetUserId();
+            var scoreList = context.Ratings.Where(m => m.ApplicationUser.Id == user).ToList();
+            foreach(var eachScore in scoreList)
+            {
+                totalScore += eachScore.Score;
+            }
+            var performanceScore = ((totalScore / scoreList.Count)/10) * 100;
+            var driverScore = new DriverScore
+            {
+                Score = performanceScore
+            };
+            return View(driverScore);
         }
 
         // POST: Rating/Create

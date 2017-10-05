@@ -41,4 +41,10 @@ namespace SchedulingSystem.ViewModels
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:#.#}")]
         public int DriverScore { get; set; }
     }
+
+    public class DriverScore
+    {
+        [Display(Name = "Your Score is")]
+        public double Score { get; set; }
+    }
 }

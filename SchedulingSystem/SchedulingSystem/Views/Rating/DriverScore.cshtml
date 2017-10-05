@@ -1,0 +1,27 @@
+﻿@model SchedulingSystem.ViewModels.DriverScore
+
+@{
+    ViewBag.Title = "DriverScore";
+}
+
+<h2>Performance Score</h2>
+
+<div>
+    @*<h4>DriverScore</h4>*@
+    <hr />
+    <h5>Good = 9-10</h5>
+    <h5>Average = 7-8</h5>
+    <h5>Below Average = 4-6</h5>
+    <h5>Poor = 0-3</h5>
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Score)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Score)<text>%</text>
+        </dd>
+
+    </dl>
+</div>
+

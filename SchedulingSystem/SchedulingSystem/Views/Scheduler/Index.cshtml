@@ -1,0 +1,70 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<div id='calendar'></div>
+
+@section Scripts{
+@Scripts.Render("~/bundles/jqueryval")
+@Scripts.Render("~/bundles/fullcalendarscheduler")
+ <script type="text/javascript">
+     $(function () { // document ready
+
+         $('#calendar').fullCalendar({
+             now: '2017-09-07',
+             editable: true,
+             aspectRatio: 1.8,
+             scrollTime: '00:00',
+             header: {
+                 left: 'promptResource today prev,next',
+                 center: 'title',
+                 right: 'timelineDay,timelineThreeDays,agendaWeek,month'
+             },
+             customButtons: {
+                 promptResource: {
+                     text: '+ Add a Cap',
+                     click: function () {
+                         var title = prompt('Cap Name');
+                         if (title) {
+                             $('#calendar').fullCalendar(
+                                 'addResource',
+                                 { title: title },
+                                 true // scroll to the new resource?
+                             );
+                         }
+                     }
+                 }
+             },
+             defaultView: 'timelineDay',
+             views: {
+                 timelineThreeDays: {
+                     type: 'timeline',
+                     duration: { days: 3 }
+                 }
+             },
+             resourceLabelText: 'Rooms',
+             resourceRender: function (resource, cellEls) {
+                 cellEls.on('click', function () {
+                     if (confirm('Are you sure you want to delete ' + resource.title + '?')) {
+                         $('#calendar').fullCalendar('removeResource', resource);
+                     }
+                 });
+             },
+             resources: [
+                 { id: 'a', title: 'Auditorium A' },
+                 { id: 'b', title: 'Auditorium B', eventColor: 'green' },
+                 { id: 'c', title: 'Auditorium C', eventColor: 'orange' }
+                 
+             ],
+             events: '/scheduler/getEvent'
+             //events: [
+             //    { id: '1', resourceId: 'b', start: '2017-09-07T02:00:00', end: '2017-09-07T07:00:00', title: 'event 1' },
+             //    { id: '2', resourceId: 'c', start: '2017-09-07T05:00:00', end: '2017-09-07T22:00:00', title: 'event 2' },
+                
+             //]
+         });
+
+     });
+</script>
+}

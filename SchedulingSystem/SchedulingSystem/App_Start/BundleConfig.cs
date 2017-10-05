@@ -24,8 +24,18 @@ namespace SchedulingSystem
                       "~/Scripts/respond.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
-                      "~/Content/bootstrap.css",
+                      "~/Content/bootstrap-sandstone.css",
                       "~/Content/site.css"));
+            bundles.Add(new StyleBundle("~/Content/fullcalendarschedulercss").Include(
+                "~/Content/fullcalendar.min.css",
+                "~/Content/scheduler.min.css"
+                ));
+            bundles.Add(new ScriptBundle("~/bundles/fullcalendarscheduler").Include(
+                "~/Scripts/gcal.min.js",
+                "~/Scripts/fullcalendar.min.js",
+                "~/Scripts/moment.min.js",
+                "~/Scripts/scheduler.min.js"
+                ));
         }
     }
 }
