@@ -1,0 +1,39 @@
+﻿@model SchedulingSystem.ViewModels.DriversPerformanceViewModel
+
+@{
+    ViewBag.Title = "DriversPerformance";
+}
+
+<style>
+    table, th, td {
+        border: 1px solid black;
+        border-collapse: collapse;
+    }
+
+    th, td {
+        padding: 5px;
+        text-align: left;
+    }
+</style>
+
+<h2>Drivers Performance</h2>
+
+<table>
+    <tr>
+        <th>Driver</th>
+        <th>Shift Date rated</th>
+        <th>Score</th>
+    </tr>
+    @foreach (var rating in Model.Ratings)
+    {
+
+        <tr>
+            <td>@rating.ApplicationUser.UserName </td>
+            <td>@rating.DateRated.ToShortDateString()</td>
+            <td>@rating.Score</td>
+        </tr>
+
+
+    }
+
+</table>

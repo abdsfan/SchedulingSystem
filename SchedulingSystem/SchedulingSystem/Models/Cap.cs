@@ -10,7 +10,8 @@ namespace SchedulingSystem.Models
     {    
         public int Id { get; set; }
         public int CapNumber { get; set; }
-        public virtual ApplicationUser ApplicationUser { get; set; }
+
+        public virtual ICollection<ApplicationUser> Users { get; set; }
 
     }
 }

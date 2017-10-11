@@ -1,31 +1,67 @@
-﻿@{
-    ViewBag.Title = "Home Page";
-}
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        #map {
+            height: 400px;
+            width: 40%;
+            background-color: gray;
 
-<div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="http://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
-</div>
+        }
+    </style>
+</head>
+<body>
+    @{
+        ViewBag.Title = "Home Page";
+    }
 
-@*<div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
-        </p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
+    <div class="jumbotron">
+        <h1 style="text-align:center">Green Cap</h1>
+        <h3>make every mile green...</h3>
+        <p class="lead">When you drive green, you’re leasing a newer model Toyota Prius, equipped with smart technology connecting you to riders.</p>
+        <p>Experience the freedom and individuality of being your own boss while earning great money.</p>
+        <p><a href="https://greencabmadison.com" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
     </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
-    </div>
-</div>*@
+
+    @*<div class="row">
+            <div class="col-md-4">
+                <h2>Getting started</h2>
+                <p>
+                    ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
+                    enables a clean separation of concerns and gives you full control over markup
+                    for enjoyable, agile development.
+                </p>
+                <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
+            </div>
+            <div class="col-md-4">
+                <h2>Get more libraries</h2>
+                <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
+                <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
+            </div>
+            <div class="col-md-4">
+                <h2>Web Hosting</h2>
+                <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
+                <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
+            </div>
+        </div>*@
+
+    <h3>Green Cap Location</h3>
+    <div id="map"></div>
+    <script>
+        function initMap() {
+            var uluru = { lat: 43.050637, lng: -89.390104 };
+            var map = new google.maps.Map(document.getElementById('map'), {
+                zoom: 15,
+                center: uluru
+            });
+            var marker = new google.maps.Marker({
+                position: uluru,
+                map: map
+            });
+        }
+    </script>
+    <script async defer
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDRhWatI5rIADg4-vHGWct3qc3F6S2YlTM&callback=initMap">
+    </script>
+</body>
+</html>

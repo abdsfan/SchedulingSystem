@@ -1,0 +1,61 @@
+﻿@model  SchedulingSystem.ViewModels.OutstandingBalanceViewModel
+
+@{
+    ViewBag.Title = "PaymentsDetail";
+}
+
+<style>
+    table, th, td {
+        border: 1px solid black;
+        border-collapse: collapse;
+    }
+
+    th, td {
+        padding: 5px;
+        text-align: left;
+    }
+</style>
+
+<h2>Scheduled Shifts</h2>
+<p>Below are the scheduled shifts with an outstanding balance. </p>
+<div>
+    <hr />
+    <dl class="dl-horizontal"></dl>
+</div>
+
+<table>
+    <tr>
+        <th>Shift Date</th>
+        <th>Cost</th>
+    </tr>
+    @foreach (var schedule in Model.ScheduleDetails)
+    {
+
+        <tr>
+            <td>@schedule.ShiftDate.ToShortDateString()</td>
+            <td>@schedule.Payment.Amount</td>
+        </tr>
+
+
+    }
+
+</table>
+<p style="margin-top: 10px">Outstanding Balance: $<pram style="font-weight: bold">@Model.TotalBalance</pram></p>
+@*<div>
+  <p class="btn btn-primary btn-lg">@Html.ActionLink("Pay", "SubmitPayment", Model)</p>  
+</div>*@
+<form action="SubmitPayment" method="POST">
+    @*@Html.HiddenFor(m => m.ScheduleDetails)*@
+    <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+            data-key="pk_test_m3POaZtysin2xxYNDrSU7Jy2"
+            data-amount=""
+            data-name="Demo Site"
+            data-description="Widget"
+            data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
+            data-locale="auto">
+    </script>
+</form>
+
+
+
+

@@ -10,7 +10,7 @@ namespace SchedulingSystem.Models
         public int Id { get; set; }
         public double Amount { get; set; }
         public string Status { get; set; }
-        public DateTime PaymentDate { get; set; }
+        public DateTime? PaymentDate { get; set; }
         public virtual PaymentType PaymentType { get; set; }
 
     }

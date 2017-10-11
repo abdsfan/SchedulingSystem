@@ -31,9 +31,9 @@ namespace SchedulingSystem
                 "~/Content/scheduler.min.css"
                 ));
             bundles.Add(new ScriptBundle("~/bundles/fullcalendarscheduler").Include(
+                 "~/Scripts/moment.min.js",
                 "~/Scripts/gcal.min.js",
                 "~/Scripts/fullcalendar.min.js",
-                "~/Scripts/moment.min.js",
                 "~/Scripts/scheduler.min.js"
                 ));
         }

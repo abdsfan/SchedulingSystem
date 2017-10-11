@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SchedulingSystem.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -46,5 +47,13 @@ namespace SchedulingSystem.ViewModels
     {
         [Display(Name = "Your Score is")]
         public double Score { get; set; }
+    }
+
+    public class DriversPerformanceViewModel
+    {
+        public List<Rating> Ratings { get; set; }
+        //public DateTime DateRated { get; set; }
+        //public int Score { get; set; }
+        //public string UserId { get; set; }
     }
 }

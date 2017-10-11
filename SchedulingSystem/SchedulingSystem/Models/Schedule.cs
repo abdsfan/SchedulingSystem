@@ -27,6 +27,7 @@ namespace SchedulingSystem.Models
         public virtual ApplicationUser ApplicationUser { get; set; }
 
         public virtual Payment Payment { get; set; }
+        public DateTime ScheduledOn { get; set; }
 
     }
 }

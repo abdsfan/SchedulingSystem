@@ -1,70 +1,80 @@
-﻿
-@{
-    ViewBag.Title = "Index";
-}
+﻿<!DOCTYPE html>
+<html>
+<head></head>
+<body style="margin-top: 30px">
 
-<div id='calendar'></div>
 
-@section Scripts{
-@Scripts.Render("~/bundles/jqueryval")
-@Scripts.Render("~/bundles/fullcalendarscheduler")
- <script type="text/javascript">
-     $(function () { // document ready
+    @{
+        ViewBag.Title = "Index";
+    }
 
-         $('#calendar').fullCalendar({
-             now: '2017-09-07',
-             editable: true,
-             aspectRatio: 1.8,
-             scrollTime: '00:00',
-             header: {
-                 left: 'promptResource today prev,next',
-                 center: 'title',
-                 right: 'timelineDay,timelineThreeDays,agendaWeek,month'
-             },
-             customButtons: {
-                 promptResource: {
-                     text: '+ Add a Cap',
-                     click: function () {
-                         var title = prompt('Cap Name');
-                         if (title) {
-                             $('#calendar').fullCalendar(
-                                 'addResource',
-                                 { title: title },
-                                 true // scroll to the new resource?
-                             );
-                         }
-                     }
-                 }
-             },
-             defaultView: 'timelineDay',
-             views: {
-                 timelineThreeDays: {
-                     type: 'timeline',
-                     duration: { days: 3 }
-                 }
-             },
-             resourceLabelText: 'Rooms',
-             resourceRender: function (resource, cellEls) {
-                 cellEls.on('click', function () {
-                     if (confirm('Are you sure you want to delete ' + resource.title + '?')) {
-                         $('#calendar').fullCalendar('removeResource', resource);
-                     }
-                 });
-             },
-             resources: [
-                 { id: 'a', title: 'Auditorium A' },
-                 { id: 'b', title: 'Auditorium B', eventColor: 'green' },
-                 { id: 'c', title: 'Auditorium C', eventColor: 'orange' }
-                 
-             ],
-             events: '/scheduler/getEvent'
-             //events: [
-             //    { id: '1', resourceId: 'b', start: '2017-09-07T02:00:00', end: '2017-09-07T07:00:00', title: 'event 1' },
-             //    { id: '2', resourceId: 'c', start: '2017-09-07T05:00:00', end: '2017-09-07T22:00:00', title: 'event 2' },
-                
-             //]
-         });
+    <div id='calendar'></div>
 
-     });
-</script>
-}
+    @section Scripts{
+        @Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/fullcalendarscheduler")
+        <script type="text/javascript">
+            $(function () { // document ready
+
+                $('#calendar').fullCalendar({
+                    now: '2017-10-10',
+                    editable: true,
+                    aspectRatio: 1.8,
+                    scrollTime: '00:00',
+                    header: {
+                        left: 'promptResource today prev,next',
+                        center: 'title',
+                        right: 'timelineDay,timelineThreeDays,agendaWeek,month'
+                    },
+                    customButtons: {
+                        promptResource: {
+                            text: '+ Add a Cap',
+                            click: function () {
+                                var title = prompt('Cap Name');
+                                if (title) {
+                                    $('#calendar').fullCalendar(
+                                        'addResource',
+                                        { title: title },
+                                        true // scroll to the new resource?
+                                    );
+                                }
+                            }
+                        }
+                    },
+                    defaultView: 'timelineDay',
+                    views: {
+                        timelineThreeDays: {
+                            type: 'timeline',
+                            duration: { days: 3 }
+                        }
+                    },
+                    resourceLabelText: 'Caps',
+                    resourceRender: function (resource, cellEls) {
+                        cellEls.on('click', function () {
+                            if (confirm('Are you sure you want to delete ' + resource.title + '?')) {
+                                $('#calendar').fullCalendar('removeResource', resource);
+                            }
+                        });
+                    },
+                    resources: [
+                        { id: '1', title: 'Cap 100' },
+				        { id: '2', title: 'Cap 200', eventColor: 'green' },
+				        { id: '3', title: 'Cap 300', eventColor: 'red' },
+                        { id: '4', title: 'Cap 400', eventColor: 'blue' },
+                        { id: '5', title: 'Cap 500', eventColor: 'orange' }
+                    ],
+                    events: [
+                        { id: '1', resourceId: '1', start: '2017-10-10T06:00:00', end: '2017-10-10T12:00:00', title: 'Mike' },
+				        { id: '2', resourceId: '2', start: '2017-10-10T02:00:00', end: '2017-10-10T13:00:00', title: 'Tim'  },
+                        { id: '3', resourceId: '3', start: '2017-10-10T00:00:00', end: '2017-10-10T09:00:00', title: 'John' },
+                        { id: '4', resourceId: '4', start: '2017-10-10T04:00:00', end: '2017-10-10T10:00:00', title: 'George' },
+                        { id: '5', resourceId: '5', start: '2017-10-10T05:00:00', end: '2017-10-10T18:00:00', title: 'Abdullah' },
+                    ]
+                   // events: '/scheduler/getEvent'
+                });
+
+            });
+        </script>
+    }
+</body>
+</html>

@@ -6,6 +6,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.IO;
+using RestSharp;
+using RestSharp.Authenticators;
 
 namespace SchedulingSystem.Controllers
 {
@@ -94,7 +97,7 @@ namespace SchedulingSystem.Controllers
             };
             context.Ratings.Add(newRating);
             context.SaveChanges();        
-            return RedirectToAction("Index", "Home");            
+            return RedirectToAction("ConfirmationMessage");            
         }
 
         public ActionResult DriverScore()
@@ -114,64 +117,22 @@ namespace SchedulingSystem.Controllers
             return View(driverScore);
         }
 
-        // POST: Rating/Create
-        [HttpPost]
-        public ActionResult Create(FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add insert logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        // GET: Rating/Edit/5
-        public ActionResult Edit(int id)
+        public ActionResult ConfirmationMessage()
         {
             return View();
         }
 
-        // POST: Rating/Edit/5
-        [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult DriversPerformance()
         {
-            try
+            var ratings = context.Ratings.OrderBy(m => m.ApplicationUser.Id).ToList();
+            var model = new DriversPerformanceViewModel
             {
-                // TODO: Add update logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
+                Ratings = ratings
+            };
+            return View(model);
         }
 
-        // GET: Rating/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
+        
 
-        // POST: Rating/Delete/5
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add delete logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
     }
 }

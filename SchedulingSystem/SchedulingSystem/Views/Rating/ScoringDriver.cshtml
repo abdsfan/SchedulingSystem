@@ -5,7 +5,7 @@
 }
 
 <h2>Rate the Driver</h2>
-<h4>You may rate the driver from 0 to 10. 0 being the worst and 10 being the best</h4>
+<h4>You may rate the driver from 0 to 10. Where 0 being the worst and 10 being the best</h4>
 
 
 @using (Html.BeginForm("SaveDriverScore", "Rating")) 
@@ -34,7 +34,7 @@
 }
 
 <div>
-    @Html.ActionLink("Back to Searching For Driver", "SearchingForDriver")
+    @Html.ActionLink( "Back to Searching For Driver", "SearchForDriver")
 </div>
 
 @section Scripts {
