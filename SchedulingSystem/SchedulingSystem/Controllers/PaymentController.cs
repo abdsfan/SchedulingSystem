@@ -51,7 +51,11 @@ namespace SchedulingSystem.Controllers
         
         public ActionResult SubmitPayment(OutstandingBalanceViewModel model)
         {
-            //SendSimpleMessage();
+            var userId = User.Identity. GetUserId();
+            var from = context.Users.Where(m => m.Id == userId).FirstOrDefault();
+            var user = from.Email.ToString();
+
+            SendSimpleMessage(user);
             return RedirectToAction("Paymentconfirmation");
         }
 
@@ -60,8 +64,10 @@ namespace SchedulingSystem.Controllers
             return View();
         }
 
-        public static IRestResponse SendSimpleMessage()
+        public static IRestResponse SendSimpleMessage(string from)
         {
+            //var isFrom = "Green Cap <" + from + "> ";
+            var isFrom = from;
             RestClient client = new RestClient();
             client.BaseUrl = new Uri("https://api.mailgun.net/v3");
             client.Authenticator =
@@ -70,7 +76,7 @@ namespace SchedulingSystem.Controllers
             RestRequest request = new RestRequest();
             request.AddParameter("domain", "sandbox3d87e8505d9144558b123e3dfb3f70ca.mailgun.org", ParameterType.UrlSegment);
             request.Resource = "{domain}/messages";
-            request.AddParameter("from", "Green Cap <greencapmadison@gmail.com>");
+            request.AddParameter("from", "Mike <"+ from +">");
             request.AddParameter("to", "Abdullah <abdsfan@gmail.com>");
             request.AddParameter("subject", "Payment Confirmation");
             request.AddParameter("text", "Hello Abdullah, We had received your payment! Thank you. ");
